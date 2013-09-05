@@ -66,10 +66,10 @@ module Formotion
             formotion_field.sizeToFit
 
             field_frame = formotion_field.frame
-            field_frame.origin.y = 10
+            field_frame.origin.y = Device.ipad? ? 14 : 10
             field_frame.origin.x = self.textLabel.frame.origin.x + self.textLabel.frame.size.width + Formotion::RowType::Base.field_buffer
             field_frame.size.width  = self.frame.size.width - field_frame.origin.x - Formotion::RowType::Base.field_buffer
-            field_frame.size.height = self.frame.size.height - Formotion::RowType::Base.field_buffer
+            field_frame.size.height = self.frame.size.height - 20 #Formotion::RowType::Base.field_buffer
             formotion_field.frame = field_frame
           end
         end
