@@ -89,7 +89,8 @@ module Formotion
 
         if source
           @camera = BW::Device.camera.send((source == :camera) ? :rear : :any)
-          @camera.popover_from(actionSheet).picture(media_types: [:image]) do |result|
+          options = {media_types: [:image]}
+          @camera.popover_from(actionSheet).picture(options, row.form.controller) do |result|
             if result[:original_image]
               #-Resize image when requested (no image upscale)
               if result[:original_image].respond_to?(:resize_image_to_size) and row.max_image_size
